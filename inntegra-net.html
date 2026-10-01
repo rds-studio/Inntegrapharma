@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inntegra-Net · Inntegrapharma</title>
+<meta name="description" content="Inntegra-Net: partnering a largo plazo con Inntegrapharma. Trabajamos desde dentro de tu equipo, como un miembro más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    --navy: #0B1F3F;
+    --navy-deep: #08172F;
+    --navy-soft: #16305C;
+    --orange: #F47B20;
+
+    --bg: #F4F6FA;
+    --bg-alt: #FFFFFF;
+    --ink: #0B1F3F;
+    --muted: #4A5B78;
+    --line: #D3DBE8;
+    --accent-text: #B84F05;
+
+    --display: "Bricolage Grotesque", "Segoe UI", Helvetica, Arial, sans-serif;
+    --body: "Figtree", "Segoe UI", Helvetica, Arial, sans-serif;
+
+    background-color: var(--navy);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0A1830;
+      --bg-alt: #0E2140;
+      --ink: #EAF0FA;
+      --muted: #A8B6CE;
+      --line: #223559;
+      --accent-text: #FF9A4D;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0A1830;
+    --bg-alt: #0E2140;
+    --ink: #EAF0FA;
+    --muted: #A8B6CE;
+    --line: #223559;
+    --accent-text: #FF9A4D;
+  }
+
+  *, *::before, *::after { box-sizing: inherit; }
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+  .sec { padding: clamp(64px, 9vw, 120px) 0; }
+  .sec-head { max-width: 640px; margin-bottom: clamp(36px, 5vw, 64px); }
+  .sec-head h2 { font-size: clamp(2rem, 4vw, 3rem); }
+  .sec-head p { margin-top: 16px; color: var(--muted); max-width: 56ch; }
+
+  /* ---------- Portada ---------- */
+  .hero {
+    background: radial-gradient(120% 90% at 85% 40%, var(--navy-soft) 0%, var(--navy) 55%, var(--navy-deep) 100%);
+    color: #fff;
+    padding-bottom: clamp(56px, 8vw, 110px);
+  }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 0; }
+  .logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo svg { width: 44px; height: 44px; flex: none; }
+  .logo-word { font-family: var(--display); font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em; color: #fff; }
+  .logo-word b { color: var(--orange); font-weight: 700; }
+  .nav { display: flex; align-items: center; gap: 28px; font-size: 0.95rem; }
+  .nav a { text-decoration: none; color: rgba(255,255,255,.82); }
+  .nav a:hover { color: #fff; }
+  .nav .nav-cta { color: var(--navy); background: var(--orange); padding: 9px 18px; border-radius: 999px; font-weight: 600; }
+  .nav .nav-cta:hover { color: var(--navy); background: #FF8F3D; }
+
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(32px, 6vw, 80px); align-items: center; padding-top: clamp(32px, 6vw, 72px); }
+  .hero h1 { font-size: clamp(2.3rem, 5.4vw, 4.2rem); font-weight: 700; max-width: 16ch; }
+  .hero-text { margin-top: 24px; max-width: 52ch; font-size: 1.15rem; color: rgba(255,255,255,.82); }
+  .hero-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn { display: inline-block; font: inherit; font-weight: 600; text-decoration: none; padding: 14px 26px; border-radius: 999px; border: 2px solid transparent; cursor: pointer; }
+  .btn-primary { background: var(--orange); color: var(--navy); }
+  .btn-primary:hover { background: #FF8F3D; }
+  .btn-ghost { border-color: rgba(255,255,255,.4); color: #fff; }
+  .btn-ghost:hover { border-color: #fff; }
+
+  .rings { width: 100%; max-width: 440px; justify-self: center; }
+  .ring { 
+    fill: none;
+    stroke: rgba(255,255,255,.55);
+    stroke-width: 1.5;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 1.4s cubic-bezier(.6,.05,.2,1);
+  }
+  .ring.r2 { stroke: rgba(255,255,255,.75); }
+  .ring.r3 { stroke: var(--orange); stroke-width: 2.5; }
+
+  .rings.is-visible .ring    { stroke-dashoffset: 0; }
+  .rings.is-visible .ring.r2 { transition-delay: .25s; }
+  .rings.is-visible .ring.r3 { transition-delay: .5s; }
+
+  .rings:hover .ring    { stroke-dashoffset: 1; }
+  .rings:hover .ring.r1 { transition-delay: .2s; }
+  .rings:hover .ring.r2 { transition-delay: .1s; }
+  .rings:hover .ring.r3 { transition-delay: 0s; }
+
+  .ring-tick { stroke: var(--orange); stroke-width: 3; stroke-linecap: round; }
+  .ring-label { font-family: var(--body); font-size: 13px; fill: rgba(255,255,255,.75); }
+  @keyframes draw { 
+    from { stroke-dashoffset: 1; }
+    to   { stroke-dashoffset: 0; }
+   }
+
+  .ig-portada {
+    background: radial-gradient(120% 90% at 85% 40%, var(--navy-soft) 0%, var(--navy) 55%, var(--navy-deep) 100%);
+    color: #fff;
+    padding-bottom: clamp(56px, 8vw, 110px);
+  }
+  .ig-portada-content {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+    padding-top: clamp(40px, 7vw, 80px);
+  }
+  .ig-logo-big { width: 88px; height: 88px; margin-bottom: 24px; }
+  .ig-portada-content h1 { font-size: clamp(2.3rem, 5.4vw, 4rem); font-weight: 700; }
+  .ig-portada-content p { margin-top: 20px; font-size: 1.15rem; color: rgba(255,255,255,.82); }
+
+  /* ---------- Soluciones ---------- */
+  .sol-list {
+    list-style: none; margin: 0; padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(32px, 5vw, 56px) clamp(24px, 5vw, 64px);
+  }
+  .sol-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--navy); color: var(--orange);
+    display: grid; place-items: center;
+    margin-bottom: 18px;
+  }
+  .sol-icon svg {
+    width: 26px; height: 26px; fill: none; stroke: currentColor;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .sol h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); margin-bottom: 8px; }
+  .sol p { color: var(--muted); max-width: 44ch; font-size: 1rem; }
+  .sectors { margin-top: 32px; color: var(--muted); font-size: 0.98rem; max-width: 70ch; }
+  .sectors strong { color: var(--ink); font-weight: 600; }
+    #soluciones {
+    background: radial-gradient(120% 120% at 15% 0%, #FFB070 0%, #F47B20 50%, #E0620F 100%);
+    color: #0B1F3F;
+  }
+  #soluciones .sec-head h2,
+  #soluciones .sec-head p,
+  #soluciones .sol p,
+  #soluciones .sectors,
+  #soluciones .sectors strong {
+    color: #ffffff;
+  }
+  #soluciones {
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+  }
+  .sol-link {
+    display: inline-block;
+    margin-top: 14px;
+    font-weight: 600;
+    color: #0B1F3F;
+    text-decoration: none;
+    border-bottom: 2px solid #0B1F3F;
+    padding-bottom: 2px;
+  }
+  .sol-link:hover { border-color: #fff; }
+  
+
+  /* ---------- Características ---------- */
+  .traits { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(32px, 5vw, 64px) clamp(32px, 6vw, 80px); }
+  .traits-sec {
+    background: linear-gradient(180deg, #0000007a 0%, var(--navy) 5%, var(--navy) 95%, #0000007a 100%);
+    color: #fff;
+  } 
+  .trait h3 {
+    font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #fff;
+    border-left: 4px solid var(--orange);
+    padding-left: 14px;
+    margin-bottom: 12px;
+  }
+  .trait h3 span { color: var(--orange); }
+  .trait p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95rem;
+    max-width: 44ch;
+  }
+
+  /* ---------- Quiénes somos ---------- */
+  .people { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 4vw, 40px); }
+  .person { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; padding: 28px; background: var(--bg-alt); border: 1px solid var(--line); border-radius: 18px; }
+  .avatar { width: 96px; height: 96px; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 1.9rem; box-shadow: inset 0 0 0 4px var(--orange); }
+  .person h3 { font-size: 1.45rem; }
+  .person .role { color: var(--accent-text); font-weight: 600; margin: 4px 0 12px; }
+  .person p.bio { color: var(--muted); }
+  #equipo {
+    position: relative;
+    z-index: 2;
+    box-shadow:
+      0 -20px 40px -10px rgba(0, 0, 0, 0.6),
+      0 20px 40px -10px rgba(0, 0, 0, 0.6);
+  }
+  #equipo {
+    background: linear-gradient(135deg, #FF9A4D 0%, #F47B20 55%, #E0620F 100%);
+  }
+  #equipo .sec-head h2,
+  #equipo .sec-head p {
+    color: #ffffff;
+  }
+  #equipo .person {
+    background: #0B1F3F;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  #equipo .person h3,
+  #equipo .person p.bio {
+    color: #fff;
+  }
+  #equipo .person .role {
+    color: #F47B20;
+  }
+
+  /* ---------- Contacto ---------- */
+  .contact {
+    background: linear-gradient(180deg, #0000007a 0%, var(--navy) 5%, var(--navy) 100%);
+    color: #fff;
+  }
+  .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
+  .contact h2 { font-size: clamp(2rem, 4vw, 3rem); }
+  .contact .lead { margin-top: 18px; color: rgba(255,255,255,.8); max-width: 44ch; }
+  .contact .direct { margin-top: 28px; }
+  .contact .direct a { color: var(--orange); font-weight: 600; word-break: break-all; }
+  form { display: grid; gap: 18px; }
+  .field { display: grid; gap: 6px; }
+  .field label { font-weight: 600; font-size: 0.95rem; }
+  .field input, .field textarea { font: inherit; color: #0B1F3F; background: #fff; border: 2px solid transparent; border-radius: 10px; padding: 12px 14px; width: 100%; }
+  .field textarea { min-height: 150px; resize: vertical; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .form-note { font-size: 0.92rem; color: rgba(255,255,255,.7); min-height: 1.4em; }
+  form .btn { justify-self: start; }
+
+  footer { background: var(--navy-deep); color: rgba(255,255,255,.6); border-top: 1px solid rgba(255,255,255,.12); padding: 24px 0; font-size: 0.9rem; }
+  /* ---------- Proceso ---------- */
+.ig-proceso {
+    background: radial-gradient(120% 120% at 15% 0%, #FFB070 0%, #F47B20 50%, #E0620F 100%);
+  }
+  .ig-icons {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: clamp(16px, 3vw, 32px);
+  }
+  .ig-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 150px;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  .ig-icon-item p { color: #0B1F3F; font-weight: 600; margin-top: 4px; }
+  .ig-arrow { font-size: 1.6rem;
+    color: #0B1F3F;
+    opacity: .5;
+    flex: none;
+    height: 56px;
+    display: flex;
+    align-items: center;
+  }
+
+  .ig-icons:hover .ig-icon-item { transform: scale(0.92); opacity: .8; }
+  .ig-icons:hover .ig-icon-item:hover { transform: scale(1.15); opacity: 1; }
+
+  .ig-icon-svg {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 14px;
+    fill: none;
+    stroke: #0B1F3F;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  @media (max-width: 700px) {
+    .ig-icons { flex-direction: column; }
+    .ig-arrow { display: none; }
+  }
+
+  /* ---------- Contacta ---------- */
+  .ig-cta {
+    background: radial-gradient(120% 90% at 85% 40%, var(--navy-soft) 0%, var(--navy) 55%, var(--navy-deep) 100%);
+    color: #fff;
+  }
+  .ig-cta-content { text-align: center; }
+  .ig-cta-content h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 28px; }
+  .btn-navy { background: #0B1F3F; color: #fff; }
+  .btn-navy:hover { background: #16305C; }
+  /* ---------- Tramado con paralaje en fondos azules ---------- */
+  .hero, .traits-sec, .contact, .ig-portada, .ig-cta {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before, .traits-sec::before, .contact::before, .ig-portada::before, .ig-cta::before  {
+    content: "";
+    position: absolute;
+    inset: -400px 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    transform: translateY(var(--py, 0px));
+    will-change: transform;
+    pointer-events: none;
+  }
+  .hero > .wrap, .traits-sec > .wrap, .contact > .wrap, .ig-portada > .wrap, .ig-cta > .wrap {
+    position: relative;
+    z-index: 1;
+  }
+  .hero::after, .traits-sec::after, .contact::after {
+    content: "";
+    position: absolute;
+    inset: -400px 0;
+    background-image:
+      linear-gradient(rgba(244, 123, 32, 0.10) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244, 123, 32, 0.10) 1px, transparent 1px);
+    background-size: 192px 192px;
+    transform: translateY(var(--py2, 0px));
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  @media (max-width: 860px) {
+    .hero-grid, .contact-grid, .people, .traits { grid-template-columns: 1fr; }
+    .rings { max-width: 300px; }
+    .sol-list { grid-template-columns: 1fr; }
+    .nav a:not(.nav-cta) { display: none; }
+    .row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .person { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ring { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PORTADA ============ -->
+<header class="ig-portada" id="inicio">
+  <div class="wrap">
+    <div class="topbar">
+      <a class="logo" href="Inntegrapharma.html" aria-label="Inntegrapharma, inicio">
+        <svg viewBox="0 0 44 44" aria-hidden="true">
+          <path d="M22 3 39 12.5v19L22 41 5 31.5v-19Z" fill="none" stroke="#F47B20" stroke-width="3" stroke-linejoin="round"/>
+          <rect x="19.5" y="18" width="5" height="13" rx="2.5" fill="#fff"/>
+          <circle cx="22" cy="12.5" r="3" fill="#fff"/>
+        </svg>
+        <span class="logo-word">Inntegra<b>pharma</b></span>
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="inntegra-net.html">Inntegra-Net</a>
+        <a href="containment.html">Containment</a>
+        <a href="definicion-proyectos.html">Definición de proyectos</a>
+        <a href="formacion.html">Formación</a>
+        <a class="nav-cta" href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+
+    <div class="ig-portada-content">
+      <svg class="rings" viewBox="0 0 400 400" role="img" aria-label="Diagrama de zonas concéntricas de contención: edificio, sala y proceso">
+        <circle class="ring r1" cx="200" cy="200" r="180" pathLength="1"/>
+        <circle class="ring r2" cx="200" cy="200" r="125" pathLength="1"/>
+        <circle class="ring r3" cx="200" cy="200" r="70" pathLength="1"/>
+        <line class="ring-tick" x1="200" y1="14" x2="200" y2="26"/>
+        <line class="ring-tick" x1="200" y1="374" x2="200" y2="386"/>
+        <line class="ring-tick" x1="14" y1="200" x2="26" y2="200"/>
+        <line class="ring-tick" x1="374" y1="200" x2="386" y2="200"/>
+        <circle cx="200" cy="200" r="14" fill="#F47B20"/>
+        <circle cx="200" cy="200" r="26" fill="none" stroke="#fff" stroke-opacity=".35"/>
+      </svg>
+      <h1>Inntegra-Net</h1>
+      <p>En Inntegra-Net nos comprometemos con empresas del sector farmacéutico/sanitario en una relación a medio/largo plazo que hará posible un crecimiento comercial, traduciéndose en un incremento efectivo en la facturación de nuestro cliente.
+        La relación comenzará con un análisis de la empresa y la definición de una estrategia de negocio. En esta fase puede ser necesario reorientar los servicios existentes o implementar nuevos servicios, sectores o mercados.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============ PROCESO ============ -->
+  <section class="sec ig-proceso" aria-label="Proceso de Inntegra-Net">
+    <div class="wrap">
+      <div class="ig-icons">
+        <div class="ig-icon-item">
+          <svg class="ig-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/>
+            <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/>
+            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/>
+          </svg>
+          <p>Definición del alcance de los nuevos servicios</p>
+        </div>
+        <span class="ig-arrow" aria-hidden="true">→</span>
+        <div class="ig-icon-item">
+          <svg class="ig-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m12.99 6.74 1.93 3.44"/>
+            <path d="M19.136 12a10 10 0 0 1-14.271 0"/>
+            <path d="m21 21-2.16-3.84"/>
+            <path d="m3 21 8.02-14.26"/>
+            <circle cx="12" cy="5" r="2"/>
+          </svg>
+          <p>Definición e implementación de los recursos requeridos</p>
+        </div>
+        <span class="ig-arrow" aria-hidden="true">→</span>
+        <div class="ig-icon-item">
+          <svg class="ig-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+            <path d="M12 11h4"/>
+            <path d="M12 16h4"/>
+            <path d="M8 11h.01"/>
+            <path d="M8 16h.01"/>
+          </svg>
+          <p>Definición e implementación del plan comercial</p>
+        </div>
+        <span class="ig-arrow" aria-hidden="true">→</span>
+        <div class="ig-icon-item">
+          <svg class="ig-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 3h20"/>
+            <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/>
+            <path d="m7 21 5-5 5 5"/>
+          </svg>
+          <p>Seguimiento de la estrategia comercial</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- ============ CONTACTA ============ -->
+  <section class="sec ig-cta">
+    <div class="wrap ig-cta-content">
+      <h2>¿Quieres formar parte de Inntegra-net?</h2>
+      <a class="btn btn-primary" href="contacto.html">Contáctanos</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Inntegrapharma. Ingeniería y consultoría farmacéutica.</div>
+</footer>
+
+<script>
+  var fondos = document.querySelectorAll(".hero, .traits-sec, .contact, .ig-portada, .ig-cta");
+
+  var ringsEl = document.querySelector(".rings");
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      ringsEl.classList.add("is-visible");
+    });
+  });
+
+  function paralaje() {
+    var alto = window.innerHeight; 
+    fondos.forEach(function (sec) {
+      var r = sec.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > alto) return;
+      sec.style.setProperty("--py", (r.top * -0.85) + "px");
+      sec.style.setProperty("--py2", (r.top * 0.48) + "px");
+    });
+  }
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    window.addEventListener("scroll", function () {
+      requestAnimationFrame(paralaje);
+    }, { passive: true });
+    paralaje();
+  }
+</script>
+</body>
+</html>
