@@ -17,14 +17,14 @@
     --navy: #0B1F3F;
     --navy-deep: #08172F;
     --navy-soft: #16305C;
-    --orange: #F47B20;
+    --orange: #E6B545;
 
     --bg: #F4F6FA;
     --bg-alt: #FFFFFF;
     --ink: #0B1F3F;
     --muted: #4A5B78;
     --line: #D3DBE8;
-    --accent-text: #B84F05;
+    --accent-text: #8A6318;
 
     --display: "Bricolage Grotesque", "Segoe UI", Helvetica, Arial, sans-serif;
     --body: "Figtree", "Segoe UI", Helvetica, Arial, sans-serif;
@@ -40,7 +40,7 @@
       --ink: #EAF0FA;
       --muted: #A8B6CE;
       --line: #223559;
-      --accent-text: #FF9A4D;
+      --accent-text: #F3D48D;
     }
   }
   :root[data-theme="dark"] {
@@ -49,7 +49,7 @@
     --ink: #EAF0FA;
     --muted: #A8B6CE;
     --line: #223559;
-    --accent-text: #FF9A4D;
+    --accent-text: #F3D48D;
   }
 
   *, *::before, *::after { box-sizing: inherit; }
@@ -88,7 +88,7 @@
   .nav a { text-decoration: none; color: rgba(255,255,255,.82); }
   .nav a:hover { color: #fff; }
   .nav .nav-cta { color: var(--navy); background: var(--orange); padding: 9px 18px; border-radius: 999px; font-weight: 600; }
-  .nav .nav-cta:hover { color: var(--navy); background: #FF8F3D; }
+  .nav .nav-cta:hover { color: var(--navy); background: #F0C464; }
 
   .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(32px, 6vw, 80px); align-items: center; padding-top: clamp(32px, 6vw, 72px); }
   .hero h1 { font-size: clamp(2.3rem, 5.4vw, 4.2rem); font-weight: 700; max-width: 16ch; }
@@ -96,7 +96,7 @@
   .hero-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; }
   .btn { display: inline-block; font: inherit; font-weight: 600; text-decoration: none; padding: 14px 26px; border-radius: 999px; border: 2px solid transparent; cursor: pointer; }
   .btn-primary { background: var(--orange); color: var(--navy); }
-  .btn-primary:hover { background: #FF8F3D; }
+  .btn-primary:hover { background: #F0C464; }
   .btn-ghost { border-color: rgba(255,255,255,.4); color: #fff; }
   .btn-ghost:hover { border-color: #fff; }
 
@@ -143,6 +143,48 @@
   .ig-portada-content h1 { font-size: clamp(2.3rem, 5.4vw, 4rem); font-weight: 700; }
   .ig-portada-content p { margin-top: 20px; font-size: 1.15rem; color: rgba(255,255,255,.82); }
 
+  .ig-people-wrap {
+    display: flex;
+    justify-content: center;
+    animation: ig-float 4s ease-in-out infinite;
+  }
+  @keyframes ig-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+
+  .ig-people-icon {
+    width: 220px;
+    height: 220px;
+    overflow: visible;
+    transform: translateY(55px);
+  }
+  .ig-people-icon .ig-person {
+    fill: none;
+    stroke-width: 2;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 1.4s cubic-bezier(.6,.05,.2,1);
+  }
+  .ig-people-icon .ig-person-left,
+  .ig-people-icon .ig-person-right {
+    stroke: #ffffff;
+  }
+  .ig-people-icon .ig-person-center {
+    stroke: #ffffff;
+    stroke-width: 2.6;
+  }
+
+  .ig-people-icon.is-visible .ig-person        { stroke-dashoffset: 0; }
+  .ig-people-icon.is-visible .ig-person-left   { transition-delay: 0s; }
+  .ig-people-icon.is-visible .ig-person-right  { transition-delay: .15s; }
+  .ig-people-icon.is-visible .ig-person-center { transition-delay: .3s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ig-people-wrap { animation: none; }
+    .ig-person { transition: none; }
+  }
+
   /* ---------- Soluciones ---------- */
   .sol-list {
     list-style: none; margin: 0; padding: 0;
@@ -165,7 +207,7 @@
   .sectors { margin-top: 32px; color: var(--muted); font-size: 0.98rem; max-width: 70ch; }
   .sectors strong { color: var(--ink); font-weight: 600; }
     #soluciones {
-    background: radial-gradient(120% 120% at 15% 0%, #FFB070 0%, #F47B20 50%, #E0620F 100%);
+    background: radial-gradient(120% 120% at 15% 0%, #F3D48D 0%, #E6B545 50%, #B68A2E 100%);
     color: #0B1F3F;
   }
   #soluciones .sec-head h2,
@@ -229,7 +271,7 @@
       0 20px 40px -10px rgba(0, 0, 0, 0.6);
   }
   #equipo {
-    background: linear-gradient(135deg, #FF9A4D 0%, #F47B20 55%, #E0620F 100%);
+    background: linear-gradient(135deg, #F3D48D 0%, #E6B545 55%, #B68A2E 100%);
   }
   #equipo .sec-head h2,
   #equipo .sec-head p {
@@ -244,7 +286,7 @@
     color: #fff;
   }
   #equipo .person .role {
-    color: #F47B20;
+    color: #E6B545;
   }
 
   /* ---------- Contacto ---------- */
@@ -269,7 +311,7 @@
   footer { background: var(--navy-deep); color: rgba(255,255,255,.6); border-top: 1px solid rgba(255,255,255,.12); padding: 24px 0; font-size: 0.9rem; }
   /* ---------- Proceso ---------- */
 .ig-proceso {
-    background: radial-gradient(120% 120% at 15% 0%, #FFB070 0%, #F47B20 50%, #E0620F 100%);
+    background: radial-gradient(120% 120% at 15% 0%, #F3D48D 0%, #E6B545 50%, #B68A2E 100%);
   }
   .ig-icons {
     display: flex;
@@ -380,9 +422,9 @@
 <header class="ig-portada" id="inicio">
   <div class="wrap">
     <div class="topbar">
-      <a class="logo" href="Inntegrapharma.html" aria-label="Inntegrapharma, inicio">
+      <a class="logo" href="index.html" aria-label="Inntegrapharma, inicio">
         <svg viewBox="0 0 44 44" aria-hidden="true">
-          <path d="M22 3 39 12.5v19L22 41 5 31.5v-19Z" fill="none" stroke="#F47B20" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M22 3 39 12.5v19L22 41 5 31.5v-19Z" fill="none" stroke="#E6B545" stroke-width="3" stroke-linejoin="round"/>
           <rect x="19.5" y="18" width="5" height="13" rx="2.5" fill="#fff"/>
           <circle cx="22" cy="12.5" r="3" fill="#fff"/>
         </svg>
@@ -397,21 +439,15 @@
       </nav>
     </div>
 
-    <div class="ig-portada-content">
-      <svg class="rings" viewBox="0 0 400 400" role="img" aria-label="Diagrama de zonas concéntricas de contención: edificio, sala y proceso">
-        <circle class="ring r1" cx="200" cy="200" r="180" pathLength="1"/>
-        <circle class="ring r2" cx="200" cy="200" r="125" pathLength="1"/>
-        <circle class="ring r3" cx="200" cy="200" r="70" pathLength="1"/>
-        <line class="ring-tick" x1="200" y1="14" x2="200" y2="26"/>
-        <line class="ring-tick" x1="200" y1="374" x2="200" y2="386"/>
-        <line class="ring-tick" x1="14" y1="200" x2="26" y2="200"/>
-        <line class="ring-tick" x1="374" y1="200" x2="386" y2="200"/>
-        <circle cx="200" cy="200" r="14" fill="#F47B20"/>
-        <circle cx="200" cy="200" r="26" fill="none" stroke="#fff" stroke-opacity=".35"/>
+    <div class="ig-people-wrap">
+      <svg class="ig-people-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path class="ig-person ig-person-center" pathLength="1" d="M17 21a5 5 0 00-10 0"/>
+        <path class="ig-person ig-person-right"  pathLength="1" d="M22 10.5a3.5 3.5 0 00-5.507-2.868"/>
+        <path class="ig-person ig-person-left"   pathLength="1" d="M7.507 7.632A3.5 3.5 0 002 10.5"/>
+        <circle class="ig-person ig-person-center" pathLength="1" cx="12" cy="13" r="3"/>
+        <circle class="ig-person ig-person-right"  pathLength="1" cx="18.5" cy="4.5" r="2.5"/>
+        <circle class="ig-person ig-person-left"   pathLength="1" cx="5.5" cy="4.5" r="2.5"/>
       </svg>
-      <h1>Inntegra-Net</h1>
-      <p>En Inntegra-Net nos comprometemos con empresas del sector farmacéutico/sanitario en una relación a medio/largo plazo que hará posible un crecimiento comercial, traduciéndose en un incremento efectivo en la facturación de nuestro cliente.
-        La relación comenzará con un análisis de la empresa y la definición de una estrategia de negocio. En esta fase puede ser necesario reorientar los servicios existentes o implementar nuevos servicios, sectores o mercados.</p>
     </div>
   </div>
 </header>
@@ -481,10 +517,10 @@
 <script>
   var fondos = document.querySelectorAll(".hero, .traits-sec, .contact, .ig-portada, .ig-cta");
 
-  var ringsEl = document.querySelector(".rings");
+  var peopleIcon = document.querySelector(".ig-people-icon");
   requestAnimationFrame(function () {
     requestAnimationFrame(function () {
-      ringsEl.classList.add("is-visible");
+      peopleIcon.classList.add("is-visible");
     });
   });
 
